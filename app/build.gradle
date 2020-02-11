@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.github.dcendents.android-maven'
+//group='com.github.zjh'
+/*Must*/
+apply plugin: 'com.jakewharton.butterknife'
+//sdkVersion
+def sdkVersion = "29.0.2"
+def targetVersion = 28
+def minVersion = 21
+/*Must*/
+android {
+    compileSdkVersion 28
+    buildToolsVersion sdkVersion
+    defaultConfig {
+        applicationId "zjh.com.basebusiness"
+        minSdkVersion minVersion
+        targetSdkVersion targetVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+//retrofit
+def retro_version = "2.3.0"
+def retro_scalars_version = "2.0.0"
+def retro_logging_version = "3.4.1"
+//Gson
+def gson_version = "2.8.0"
+//rxAndroid
+def rxAndroid_version = "1.2.1"
+def raAndroid_rxJava_version = "1.1.0"
+//ButterKnife
+def butterKnife_version = "10.2.0"
+//BaseRecyclerAdapter
+def baseRecycler_version = "2.9.30"
+//Glide
+def glide_version = "4.3.1"
+//toasty
+def toasty_version = "1.4.2"
+//acp
+def acp_version = "1.2.0"
+//logger
+def logger_version = "2.1.1"
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    /**
+     *       Must
+     */
+    //v7
+    implementation "com.android.support:appcompat-v7:$sdkVersion"
+    //v4
+    implementation "com.android.support:support-v4:$sdkVersion"
+    //retrofit 网络请求
+    implementation "com.squareup.retrofit2:retrofit:$retro_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retro_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retro_scalars_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$retro_logging_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retro_version"
+
+    //GSON
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    //butterknife 视图绑定
+    implementation "com.jakewharton:butterknife:$butterKnife_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnife_version"
+
+    //rxjava 异步操作
+    implementation "io.reactivex:rxandroid:$rxAndroid_version"
+    implementation "io.reactivex:rxjava:$raAndroid_rxJava_version"
+
+    //design cardView
+    implementation "com.android.support:design:$sdkVersion"
+    implementation "com.android.support:cardview-v7:$sdkVersion"
+
+    //recyclerView\万能适配器\标签\侧滑支持
+    implementation "com.android.support:recyclerview-v7:$sdkVersion"
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baseRecycler_version"
+    implementation 'com.oushangfeng:PinnedSectionItemDecoration:1.3.0'
+    implementation 'com.yanzhenjie.recyclerview:support:1.3.0'
+    implementation 'com.yanzhenjie:permission:2.0.0-rc12'
+
+    //Glide 图片加载
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+
+    //Toasty 吐司
+    implementation "com.github.GrenderG:Toasty:$toasty_version"
+
+    //acp 请求权限
+    implementation "com.mylhyl:acp:$acp_version"
+
+    //Logger 打印数据
+    implementation "com.orhanobut:logger:$logger_version"
+    /**
+     *       Must
+     */
+}
