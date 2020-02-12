@@ -102,6 +102,16 @@ public abstract class BaseFragment<P extends BasePresenter<V>,V extends BaseView
         startActivity(tartgetClass, false);
     }
 
+    public ChangeNewListener changeNewListener;
+
+    public void setChangeNewListener(ChangeNewListener changeNewListener) {
+        this.changeNewListener = changeNewListener;
+    }
+
+
+    public interface ChangeNewListener{
+        void changeNew(BaseFragment replaceFragment);
+    }
 
     @Override
     public void onDestroyView() {
